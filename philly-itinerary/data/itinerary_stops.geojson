@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "independence_hall",
+        "name": "Independence Hall",
+        "theme": "history",
+        "time_of_day": "morning",
+        "est_duration_min": 60,
+        "est_cost": 0,
+        "description": "Iconic historic site where the Declaration of Independence was debated and adopted.",
+        "must_see": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.1503, 39.9489]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "betsy_ross_house",
+        "name": "Betsy Ross House & Garden",
+        "theme": "history",
+        "time_of_day": "afternoon",
+        "est_duration_min": 45,
+        "est_cost": 8,
+        "description": "Small museum with a quiet garden—nice spot to rest with a coffee or bubble tea.",
+        "must_see": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.1441, 39.9524]
+      }
+    }
+  ]
+}
