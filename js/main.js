@@ -12,38 +12,48 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initMap() {
-  // Center roughly on Old City
-  map = L.map("map").setView([39.949, -75.148], 14);
+  // Center roughly on Philadelphia
+  map = L.map('map').setView([39.9526, -75.1652], 13);
 
   // Add basemap
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution: "&copy; OpenStreetMap contributors"
-  }).addTo(map);
+  L.tileLayer(
+    "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+    {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: "abcd",
+      maxZoom: 19
+    }
+  ).addTo(map);
+  
 
-  // Empty GeoJSON layer for stops (we’ll add data later)
+  // GeoJSON layer for stops
   stopsLayer = L.geoJSON(null, {
     pointToLayer: (feature, latlng) => {
-      const theme = feature.properties.theme;
+      const themes = feature.properties.themes || [];
+      const primaryTheme = themes[0] || "other";  // pick first tag for color
+    
       const marker = L.circleMarker(latlng, {
         radius: 6,
         weight: 1,
-        color: themeColor(theme),
-        fillColor: themeColor(theme),
+        color: themeColor(primaryTheme),
+        fillColor: themeColor(primaryTheme),
         fillOpacity: 0.8
       });
       return marker;
     },
     onEachFeature: (feature, layer) => {
       const p = feature.properties;
+      const themes = p.themes || [];
+    
       layer.bindPopup(`
         <strong>${p.name}</strong><br>
-        Theme: ${p.theme}<br>
+        Themes: ${themes.join(", ")}<br>
         Est. duration: ${p.est_duration_min} min<br>
         Est. cost: $${p.est_cost}<br>
         ${p.description}
       `);
-    }
+    }    
   }).addTo(map);
 }
 
@@ -52,7 +62,8 @@ function themeColor(theme) {
     case "history": return "#1f77b4";
     case "food": return "#ff7f0e";
     case "recreation": return "#2ca02c";
-    case "evening": return "#9467bd";
+    case "museum": return "#8c564b";
+    case "university": return "#17becf";
     default: return "#555";
   }
 }
@@ -120,7 +131,8 @@ function applyFilters() {
   for (const feature of allStops) {
     const p = feature.properties;
 
-    const matchesTheme = selectedThemes.includes(p.theme);
+    const themes = p.themes || [];  
+    const matchesTheme = themes.some(t => selectedThemes.includes(t));
     const withinBudget = (totalCost + p.est_cost) <= maxPrice;
     const withinTime = (totalDuration + p.est_duration_min) <= timeLimit;
 
@@ -152,10 +164,12 @@ function renderStopList(features) {
     const li = document.createElement("li");
     li.className = "stop";
 
+    const themes = p.themes || [];
+
     li.innerHTML = `
       <header class="name">${p.name}</header>
       <span class="cost">$${p.est_cost}</span>
-      <span class="theme">${p.theme}</span>
+      <span class="theme">${p.themes.join(", ")}</span>
       <span class="duration">${p.est_duration_min} min</span>
       <p class="description">${p.description}</p>
     `;

@@ -14,64 +14,107 @@
   </head>
 
   <body>
+    <header class="app-header">
+      <h1>Build Your Own Philadelphia Itinerary</h1>
+    </header>
+
     <main>
       <!-- Map and Controls on the LEFT -->
       <section class="map-section">
+        <!--
         <fieldset class="map-search-controls">
-          <!-- Ask user where their start point is -->
-          <input type="text" name="address-search" placeholder="Staying Near..." aria-label="Search around an address or place">
-          <!-- Ask user how much time they have -->
-          <select name="time-available" aria-label="How much time do you have?">
-            <option value="half">Half day (~4 hours)</option>
-            <option value="full" selected>Fully day (~8 hours)</option>      
-          </select>    
+          <input
+            type="text"
+            name="address-search"
+            placeholder="Staying near..."
+            aria-label="Search around an address or place"
+          >
         </fieldset>
-
+        -->
         <div id="map" class="map"></div>
       </section>
-
-      <!-- Filters and Itinerary List on the RIGHT-->
+  
+      <!-- Filters and Itinerary List on the RIGHT -->
       <section class="itinerary-section">
         <fieldset class="itinerary-controls">
-          <legend>Fulter by theme & budget</legend>
-          
+          <legend>Filter by Theme &amp; Budget</legend>
+  
+          <!-- THEME FILTERS -->
           <div class="theme-filters">
-            <label><input type ="checkbox" name="theme" value="history" checked> History</label>
-            <label><input type ="checkbox" name="theme" value="food" checked> Food & Drink</label>
-            <label><input type ="checkbox" name="theme" value="recreation" checked> Parks & Recreation</label>
+            <!-- Core themes as colored pill buttons -->
+            <span class="theme-group-label">Main themes:</span>
+            <label class="theme-pill theme-history">
+              <input type="checkbox" name="theme" value="history" checked>
+              <span>History</span>
+            </label>          
+            <label class="theme-pill theme-food">
+              <input type="checkbox" name="theme" value="food" checked>
+              <span>Food &amp; Drink</span>
+            </label>          
+            <label class="theme-pill theme-recreation">
+              <input type="checkbox" name="theme" value="recreation" checked>
+              <span>Parks &amp; Recreation</span>
+            </label>
+            <label class="theme-pill theme-museum">
+              <input type="checkbox" name="theme" value="museum" checked>
+              <span>Museums</span>
+            </label>
+          </div>
+  
+            <!-- More specific tag (default to unchecked) -->
+          <div class="secondary-theme-group">
+            <span class="theme-group-label">More tags:</span> <label><input type="checkbox" name="theme" value="nature"> Nature</label>
+            <label><input type="checkbox" name="theme" value="architecture"> Architecture</label>
+            <label><input type="checkbox" name="theme" value="iconic"> Iconic Spots</label>
+            <label><input type="checkbox" name="theme" value="transport"> Transit Hubs</label>
+            <label><input type="checkbox" name="theme" value="university"> University</label>
+            <label><input type="checkbox" name="theme" value="waterfront"> Waterfront</label>
+
           </div>
 
+          <!-- TIME FILTER -->
+        <div class="time-filter">
+          <label for="time-available" class="filter-label">How much time do you have?</label>
+          <select id="time-available" name="time-available" aria-label="How much time do you have?">
+           <option value="half">Half day (~4 hours)</option>
+            <option value="full" selected>Full day (~8 hours)</option>
+          </select>
+        </div>
+  
+          <!-- PRICE FILTER -->
           <div class="price-filters">
-            <label>Max cost for the day: $
-              <input type ="range" name="max-price" min="0" max="500" value="60"> 
+            <label>
+              Max cost for the day: $
+              <input type="range" name="max-price" min="0" max="150" value="60">
               <span id="max-price-label">60</span>
             </label>
           </div>
         </fieldset>
-       
+  
         <section class="summary-section">
           <h2>Itinerary Summary</h2>
           <p id="summary-text">
-            Select themes and budget to see suggested stops.
+            Select themes and a budget to see suggested stops.
           </p>
         </section>
-
-        <section class="stop-list-section" aria-label="Suggest Stops">
+  
+        <section class="stop-list-section" aria-label="Suggested stops">
           <ul class="stop-list">
-            <!-- Populate Stops from js list-->
+            <!-- JS will populate stops here -->
           </ul>
         </section>
       </section>
-    </main> 
-
+    </main>
+  
     <!-- Leaflet JS -->
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
-
+  
     <!-- Original JS -->
     <script src="js/main.js"></script>
   </body>
+  
 </html>
