@@ -561,6 +561,57 @@
         "type": "Point",
         "coordinates": [-75.1582, 39.9489]
       }
-    }           
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "philadelphias_magic_gardens",
+        "name": "Philadelphia's Magic Gardens",
+        "address": "1020 South St, Philadelphia, PA 19147",
+        "themes": ["museum", "art", "iconic"],
+        "est_duration_min": 60,
+        "est_cost": 15,
+        "description": "Immersive mosaic art environment by Isaiah Zagar, with indoor galleries and outdoor labyrinthine courtyards—one of Philly's most unique visual art experiences on South Street.",
+        "must_see": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.159296, 39.942859]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fairmount_park",
+        "name": "Fairmount Park",
+        "address": "Fairmount Park, Philadelphia, PA 19131",
+        "themes": ["recreation", "nature", "waterfront"],
+        "est_duration_min": 60,
+        "est_cost": 0,
+        "description": "Expansive urban parkland along the Schuylkill River with trails, overlooks, and historic sites—great for a walk, bike ride, or a break from the city streets.",
+        "must_see": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.2099022, 39.983446]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "shofuso_japanese_cultural_center",
+        "name": "Shofuso Japanese Cultural Center",
+        "address": "Lansdowne Dr & Horticultural Dr, Philadelphia, PA 19131",
+        "themes": ["museum", "nature", "culture"],
+        "est_duration_min": 60,
+        "est_cost": 15,
+        "description": "Traditional Japanese house and garden in West Fairmount Park with koi pond, cherry trees, and serene spaces—ideal for a quieter cultural stop outside Center City.",
+        "must_see": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.2128, 39.9814]
+      }
+    }       
   ]
 }
