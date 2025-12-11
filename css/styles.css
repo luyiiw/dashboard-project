@@ -135,8 +135,8 @@ main {
   display: inline-block;
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgb(0 0 0 / 8%);
+  background-color: rgb(0 0 0 / 2%);
   font-size: 0.85rem;
   color: var(--theme-color);
   transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
@@ -144,7 +144,7 @@ main {
 
 /* Hover state */
 .theme-pill:hover span {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgb(0 0 0 / 5%);
 }
 
 /* Checked state: filled pill */
@@ -169,7 +169,7 @@ main {
 }
 
 .theme-museum {
-  --theme-color: #8c564b; /
+  --theme-color: #8c564b; 
 }
 
 .price-filters {
@@ -247,7 +247,7 @@ main {
 }
 
 /* ===== DESKTOP / WIDE LAYOUT ===== */
-@media (min-width: 768px) {
+@media (width >= 768px) {
   main {
     flex-direction: row;   /* map on the left, panel on the right */
   }
