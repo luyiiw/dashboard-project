@@ -26,14 +26,6 @@ Compared to the original story map, this version:
 
 ---
 ## **Technical Details**
-
-### **Technologies Used**
-
-* **Leaflet.js** for interactive mapping
-* **Vanilla JavaScript** for filtering logic, event listeners, and DOM manipulation
-* **HTML & CSS** for structure and styling
-* **GeoJSON** as the core data format
-
 ### **Key Functional Components**
 
 #### **1. Event Handling**

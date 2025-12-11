@@ -164,7 +164,7 @@ function renderStopList(features) {
     const li = document.createElement("li");
     li.className = "stop";
 
-    const themes = p.themes || [];
+    // const themes = p.themes || [];
 
     li.innerHTML = `
       <header class="name">${p.name}</header>
